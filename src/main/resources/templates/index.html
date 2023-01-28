@@ -111,17 +111,13 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Apellido</th>
-                                <th scope="col">Especialidad</th>
-                                <th scope="col">Estado</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="doc : ${doctors}">
-                                <th scope="row"><span th:text="${doc.code}"> Code </span></th>
-                                <td><span th:text="${doc.name}"> Name </span></td>
-                                <td><span th:text="${doc.lastname}"> Lastname </span></td>
-                                <td><span th:text="${doc.speciality.name}"> Lastname </span></td>
-                                <td><span th:text="${doc.status?'Activo':'Inactivo'}"> Status </span></td>
+                            <tr th:each="pat : ${patients}">
+                                <th scope="row"><span th:text="${pat.code}"> Code </span></th>
+                                <td><span th:text="${pat.name}"> Name </span></td>
+                                <td><span th:text="${pat.lastname}"> Lastname </span></td>
                             </tr>
                             </tbody>
                         </table>
@@ -148,19 +144,19 @@
                             <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Apellido</th>
-                                <th scope="col">Especialidad</th>
+                                <th scope="col">Paciente</th>
+                                <th scope="col">Doctor</th>
+                                <th scope="col">Cita</th>
                                 <th scope="col">Estado</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="doc : ${doctors}">
-                                <th scope="row"><span th:text="${doc.code}"> Code </span></th>
-                                <td><span th:text="${doc.name}"> Name </span></td>
-                                <td><span th:text="${doc.lastname}"> Lastname </span></td>
-                                <td><span th:text="${doc.speciality.name}"> Lastname </span></td>
-                                <td><span th:text="${doc.status?'Activo':'Inactivo'}"> Status </span></td>
+                            <tr th:each="appo : ${appointments}">
+                                <th scope="row"><span th:text="${appo.code}"> Code </span></th>
+                                <td><span th:text="${appo.patient.name} + ' ' + ${appo.patient.lastname}"> Patient </span></td>
+                                <td><span th:text="${appo.doctor.name} + ' ' + ${appo.doctor.lastname}"> Doctor </span></td>
+                                <td><span th:text="${appo.date} + ' ' + ${appo.hour}"> Appointments </span></td>
+                                <td><span th:text="${statements[appo.status]}"> Status </span></td>
                             </tr>
                             </tbody>
                         </table>

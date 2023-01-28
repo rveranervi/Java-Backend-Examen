@@ -11,6 +11,7 @@ import pe.sermed.backend.service.DoctorService;
 import pe.sermed.backend.service.PatientService;
 
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("")
@@ -30,9 +31,11 @@ public class HomeController {
 
     @GetMapping("/")
     public String showAll(Model model) {
+        String[] statements = {"Pendiente","Agendado","Finalizado","Reprogramado","Cancelada"};
         model.addAttribute("doctors", doctorService.listAll(-1));
         model.addAttribute("patients", patientService.listAll());
-        model.addAttribute("appointments", appointmentService.listAll());
+        model.addAttribute("appointments", appointmentService.listAll(-1));
+        model.addAttribute("statements", statements);
         return "index";
     }
 }

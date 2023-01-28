@@ -6,6 +6,9 @@ import java.util.List;
 
 public interface AppointmentService {
 
-    List<AppointmentDTO> listAll();
+    List<AppointmentDTO> listAll(int status);
+    AppointmentDTO getOne(int id);
+    AppointmentDTO save(AppointmentDTO appointment);
+    boolean delete(int id);
 
 }
